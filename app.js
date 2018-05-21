@@ -26,6 +26,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 //////////////////////////////xử lý người dùng đăng nhập/////////////////////////
 /////////////////////////////////////////////////////////////////////////////////
@@ -53,12 +58,6 @@ var strategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {
 });
 
 passport.use(strategy);
-
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
 
 app.post('/login', function (req, res) {
   if (req.body.name && req.body.password) {

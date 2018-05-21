@@ -4,55 +4,87 @@ var product = require('../controllers/products.js');
 var type = require('../controllers/type.js');
 var user = require('../controllers/user.js');
 
+var jwt = require('jsonwebtoken');
+var passport = require("passport");
+var passportJWT = require("passport-jwt");
+
+var ExtractJwt = passportJWT.ExtractJwt;
+var JwtStrategy = passportJWT.Strategy;
+
+var jwtOptions = {}
+jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+jwtOptions.secretOrKey = 'tasmanianDevil123';
+
+var strategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {
+    console.log('payload received', jwt_payload);
+    next(null, jwt_payload)
+    // usually this would be a database call:
+    // var user = users[_.findIndex(users, {id: jwt_payload.id})];
+    // if (user) {
+    //     next(null, user);
+    // } else {
+    //     next(null, false);
+    // }
+});
+
+passport.use(strategy);
+
+
+
+
+
     // Create a new Note
-    router.post('/products', product.create);
+    router.post('/products', passport.authenticate('jwt', { session: false }), product.create);
 
     // Retrieve all products
-    router.get('/products', product.findAll);
+    router.get("/products", passport.authenticate('jwt', { session: false }), product.findAll);
 
     // Retrieve a single Note with noteId
     //router.get('/celebrities/:celebritiesId', celebrities.findOne);
 
     // Update a Note with noteId
-    router.put('/products', product.update);
+    router.put('/products', passport.authenticate('jwt', { session: false }), product.update);
 
     // Delete a Note with noteId
-    router.delete('/products/:productId', product.delete);
+    router.delete('/products/:productId', passport.authenticate('jwt', { session: false }), product.delete);
 
     // tìm kiếm 1 sản phẩm
 
-    router.get('/products/:productId', product.findOne);
+    router.get('/products/:productId', passport.authenticate('jwt', { session: false }), product.findOne);
 
 
 /////////////////////////////////////////Loại máy/////////////////////////
     // Create a new Note
-    router.post('/type', type.create);
+    router.post('/type', passport.authenticate('jwt', { session: false }), type.create);
 
     // Retrieve all products
-    router.get('/type', type.findAll);
+    router.get('/type', passport.authenticate('jwt', { session: false }), type.findAll);
 
     // Update a Note with noteId
-    router.put('/type', type.update);
+    router.put('/type', passport.authenticate('jwt', { session: false }), type.update);
 
     // Delete a Note with noteId
-    router.delete('/type/:typeId', type.delete);
+    router.delete('/type/:typeId', passport.authenticate('jwt', { session: false }), type.delete);
 
 
 ///////////////////////////////////Người dùng////////////////////////////////
     // Create a new Note
-    router.post('/user', user.create);
+    router.post('/user', passport.authenticate('jwt', { session: false }), user.create);
 
     // Retrieve all products
-    router.get('/user', user.findAll);
+    router.get('/user', passport.authenticate('jwt', { session: false }), user.findAll);
 
     // Update a Note with noteId
-    router.put('/user', user.update);
+    router.put('/user', passport.authenticate('jwt', { session: false }), user.update);
 
     // Delete a Note with noteId
-    router.delete('/user/:userId', user.delete);
+    router.delete('/user/:userId', passport.authenticate('jwt', { session: false }), user.delete);
 
     // tìm kiếm 1 người dùng có username
 
-    router.get('/user/:username', user.findUsername);
+    router.get('/user/:username', passport.authenticate('jwt', { session: false }), user.findUsername);
 
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 module.exports = router;
