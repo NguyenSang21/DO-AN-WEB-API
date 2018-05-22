@@ -73,7 +73,7 @@ passport.use(strategy);
 
 ///////////////////////////////////Người dùng////////////////////////////////
     // Create a new Note
-    router.post('/user', passport.authenticate('jwt', { session: false }), user.create);
+    router.post('/user', user.create);
 
     // Retrieve all products
     router.get('/user', user.findAll);
