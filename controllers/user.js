@@ -55,11 +55,11 @@ exports.delete = function (req, res) {
     });
 };
 
-exports.findUsername = function (req, res) {
+exports.findOneUsername = function (req, res) {
     // Retrieve and return all notes from the database.
     var username = req.params.username;
     console.log(username);
-    userModel.findUsername(username, function (err, data) {
+    userModel.findOneUsername(username, function (err, data) {
         if (err) {
             res.status(400).send(err);
             return;
