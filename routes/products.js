@@ -68,7 +68,7 @@ passport.use(strategy);
 
     // tìm kiếm 1 type
 
-    router.get('/type/:typeId', product.findOneType);
+    router.get('/type/:typeId', type.findOneType);
 
 
 ///////////////////////////////////Người dùng////////////////////////////////

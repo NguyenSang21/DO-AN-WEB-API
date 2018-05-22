@@ -18,7 +18,7 @@ exports.findOneType = function (req, res) {
     // Retrieve and return all notes from the database.
     var id = req.params.typeId;
     console.log(id);
-    productModel.findOneType(id, function (err, data) {
+    typeModel.findOneType(id, function (err, data) {
         if (err) {
             res.status(400).send(err);
             return;
