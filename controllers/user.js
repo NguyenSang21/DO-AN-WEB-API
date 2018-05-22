@@ -68,3 +68,16 @@ exports.findOneUsername = function (req, res) {
     }
     );
 };
+
+exports.findOneUserId = function (req, res) {
+    // Retrieve and return all notes from the database.
+    var userId = req.params.userId;
+    userModel.findOneUserId(userId, function (err, data) {
+        if (err) {
+            res.status(400).send(err);
+            return;
+        }
+        res.send(data);
+    }
+    );
+};

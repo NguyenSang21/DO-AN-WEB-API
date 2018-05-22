@@ -33,3 +33,11 @@ exports.findOneUsername = function(value, callback){
 		callback(err,data);
 	});
 }
+
+exports.findOneUserId = function(value, callback){
+	console.log(value);
+	var query = "select * from ngdung where idNGDUNG = ?";
+	db.executeParamsQuery(query, value, function(err,data){
+		callback(err,data);
+	});
+}

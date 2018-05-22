@@ -84,6 +84,8 @@ passport.use(strategy);
     // Delete a Note with noteId
     router.delete('/user/:userId', passport.authenticate('jwt', { session: false }), user.delete);
 
+    // tìm theo id
+    router.get('/user/:userId', user.findOneUserId);
     // tìm kiếm 1 người dùng có username
 
     router.get('/user/:username', user.findOneUsername);
