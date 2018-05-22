@@ -37,7 +37,7 @@ passport.use(strategy);
     router.post('/products', passport.authenticate('jwt', { session: false }), product.create);
 
     // Retrieve all products
-    router.get("/products", passport.authenticate('jwt', { session: false }), product.findAll);
+    router.get("/products", product.findAll);
 
     // Retrieve a single Note with noteId
     //router.get('/celebrities/:celebritiesId', celebrities.findOne);
@@ -50,7 +50,7 @@ passport.use(strategy);
 
     // tìm kiếm 1 sản phẩm
 
-    router.get('/products/:productId', passport.authenticate('jwt', { session: false }), product.findOne);
+    router.get('/products/:productId', product.findOne);
 
 
 /////////////////////////////////////////Loại máy/////////////////////////
@@ -58,7 +58,7 @@ passport.use(strategy);
     router.post('/type', passport.authenticate('jwt', { session: false }), type.create);
 
     // Retrieve all products
-    router.get('/type', passport.authenticate('jwt', { session: false }), type.findAll);
+    router.get('/type', type.findAll);
 
     // Update a Note with noteId
     router.put('/type', passport.authenticate('jwt', { session: false }), type.update);
@@ -72,7 +72,7 @@ passport.use(strategy);
     router.post('/user', passport.authenticate('jwt', { session: false }), user.create);
 
     // Retrieve all products
-    router.get('/user', passport.authenticate('jwt', { session: false }), user.findAll);
+    router.get('/user', user.findAll);
 
     // Update a Note with noteId
     router.put('/user', passport.authenticate('jwt', { session: false }), user.update);
@@ -82,7 +82,7 @@ passport.use(strategy);
 
     // tìm kiếm 1 người dùng có username
 
-    router.get('/user/:username', passport.authenticate('jwt', { session: false }), user.findUsername);
+    router.get('/user/:username', user.findUsername);
 
 
 ////////////////////////////////////////////////////////////////////////////////
