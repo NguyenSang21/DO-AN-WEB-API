@@ -67,7 +67,7 @@ app.post('/login', function (req, res) {
 
   // usually this would be a database call:
   //var user = users[_.findIndex(users, {name: name})];
-  userModel.findUsername(name, function (err, data) {
+  userModel.findOneUsername(name, function (err, data) {
         if (err) {
             res.status(400).send(err);
             return;
