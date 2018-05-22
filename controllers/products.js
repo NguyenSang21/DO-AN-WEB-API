@@ -27,11 +27,11 @@ exports.findAll = function (req, res) {
     );
 };
 
-exports.findOne = function (req, res) {
+exports.findOneProduct = function (req, res) {
     // Retrieve and return all notes from the database.
     var id = req.params.productId;
     console.log(id);
-    productModel.findOne(id, function (err, data) {
+    productModel.findOneProduct(id, function (err, data) {
         if (err) {
             res.status(400).send(err);
             return;

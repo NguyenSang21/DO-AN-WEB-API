@@ -50,7 +50,7 @@ passport.use(strategy);
 
     // tìm kiếm 1 sản phẩm
 
-    router.get('/products/:productId', product.findOne);
+    router.get('/products/:productId', product.findOneProduct);
 
 
 /////////////////////////////////////////Loại máy/////////////////////////
@@ -65,6 +65,10 @@ passport.use(strategy);
 
     // Delete a Note with noteId
     router.delete('/type/:typeId', passport.authenticate('jwt', { session: false }), type.delete);
+
+    // tìm kiếm 1 type
+
+    router.get('/type/:typeId', product.findOneType);
 
 
 ///////////////////////////////////Người dùng////////////////////////////////
@@ -82,7 +86,7 @@ passport.use(strategy);
 
     // tìm kiếm 1 người dùng có username
 
-    router.get('/user/:username', user.findUsername);
+    router.get('/user/:username', user.findOneUsername);
 
 
 ////////////////////////////////////////////////////////////////////////////////

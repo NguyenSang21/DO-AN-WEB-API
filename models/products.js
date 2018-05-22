@@ -5,7 +5,7 @@ exports.findAll = function(callback){
 	});
 }
 
-exports.findOne = function(value, callback){
+exports.findOneProduct = function(value, callback){
 	console.log(value);
 	var query = "select * from may where idM = ?";
 	db.executeParamsQuery(query, value, function(err,data){

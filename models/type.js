@@ -11,6 +11,14 @@ exports.create = function (value ,callback) {
     });
 }
 
+exports.findOneType = function(value, callback){
+	console.log(value);
+	var query = "select * from loaimay where idloai = ?";
+	db.executeParamsQuery(query, value, function(err,data){
+		callback(err,data);
+	});
+}
+
 exports.update = function (value, callback) {
 	var query = "update loaimay Set tenloai = ? Where idloai = ? ";
 	db.executeParamsQuery(query, [value.tenloai, value.idloai], function(err, data){
