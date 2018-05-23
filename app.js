@@ -38,8 +38,11 @@ var session = require('express-session');
 app.use(session({
   secret: 'tasmanianDevil123',
   resave: false,
-  saveUninitialized: true,
-  cookie: { maxAge: 1000*60*60*24 }
+  saveUninitialized: false,
+  cookie: { 
+    httpOnly: false,
+    maxAge: 1000*60*60*24 
+  }
 }));
 /////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////
@@ -76,6 +79,7 @@ app.post('/login', function (req, res) {
       var name = req.body.name;
       var password = req.body.password;
   }
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
 
   // usually this would be a database call:
   //var user = users[_.findIndex(users, {name: name})];
