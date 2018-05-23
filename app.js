@@ -121,8 +121,14 @@ app.get("/getInfo", (req, res) => {
   {
     res.json({username: req.session.username, token: req.session.token});
   }
-  res.json({username: "", token: ""});
-})
+  res.json({username: null, token: null});
+});
+
+app.get("/logout", (req, res) => {
+  req.session.username = null;
+  req.session.token = null;
+  return;
+});
 
 
 ////////////////////////////////////////////////////////////////////////////////
