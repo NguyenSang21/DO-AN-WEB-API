@@ -32,6 +32,18 @@ app.use(function (req, res, next) {
   next();
 });
 
+//////////////////////////////lưu phiên đăng nhập/////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+var session = require('express-session');
+app.use(session({
+  secret: 'tasmanianDevil123',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { maxAge: 1000*60*60*2 }
+}));
+/////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
+
 //////////////////////////////xử lý người dùng đăng nhập/////////////////////////
 /////////////////////////////////////////////////////////////////////////////////
 var jwt = require('jsonwebtoken');
@@ -78,6 +90,11 @@ app.post('/login', function (req, res) {
             // from now on we'll identify the user by the id and the id is the only personalized value that goes into our token
             var payload = {id: data[0].idNGDUNG, name: data[0].Username, role: data[0].Username};
             var token = jwt.sign(payload, jwtOptions.secretOrKey);
+
+            req.session.username = name;
+            req.session.token = token;
+
+
             res.json({message: "ok", token: token});
         }
         else
@@ -97,6 +114,15 @@ app.post('/login', function (req, res) {
 app.get("/secret", passport.authenticate('jwt', { session: false }), function(req, res){
   res.json("Success! You can not see this without a token");
 });
+
+
+app.get("/getInfo", (req, res) => {
+  if(req.session.username && req.session.token)
+  {
+    res.json({username: req.session.username, token: req.session.token});
+  }
+  res.json({username: "", token: ""});
+})
 
 
 ////////////////////////////////////////////////////////////////////////////////
