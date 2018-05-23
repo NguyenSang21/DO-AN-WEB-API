@@ -79,7 +79,6 @@ app.post('/login', function (req, res) {
       var name = req.body.name;
       var password = req.body.password;
   }
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
 
   // usually this would be a database call:
   //var user = users[_.findIndex(users, {name: name})];
