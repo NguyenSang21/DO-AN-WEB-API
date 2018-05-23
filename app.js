@@ -82,7 +82,7 @@ app.post('/login', function (req, res) {
         }
         else
         {
-          res.status(401).json({message: "username and password not matched"});
+          res.status(401).send(err);
           return;
         }
     }
