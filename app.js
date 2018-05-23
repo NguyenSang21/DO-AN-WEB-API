@@ -119,9 +119,9 @@ app.get("/secret", passport.authenticate('jwt', { session: false }), function(re
 app.get("/getInfo", (req, res) => {
   if(req.session.username && req.session.token)
   {
-    res.json({username: req.session.username, token: req.session.token});
+    return res.json({username: req.session.username, token: req.session.token});
   }
-  res.json({username: null, token: null});
+  return res.json({username: null, token: null});
 });
 
 app.get("/logout", (req, res) => {
