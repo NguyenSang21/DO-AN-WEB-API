@@ -13,6 +13,36 @@ exports.findOneProduct = function(value, callback){
 	});
 }
 
+exports.findProductHSX = function(callback){
+	var query = "SELECT NSX FROM may GROUP BY(NSX)";
+	db.executeQuery(query, function(err,data){
+		callback(err,data);
+	});
+}
+
+exports.findOneProductHSX = function(name, callback){
+	var query = "SELECT * FROM may WHERE NSX = ?";
+	db.executeParamsQuery(query, name, function(err,data){
+		callback(err,data);
+	});
+}
+
+exports.findOneProductGia = function(giabd, giakt, callback){
+	var query = "SELECT * FROM may WHERE Gia >= ? AND Gia <= ?";
+	db.executeParamsQuery(query, [giabd, giakt], function(err,data){
+		callback(err,data);
+	});
+}
+
+exports.findOneProductType = function(value, callback){
+	console.log(value);
+	var query = "SELECT * FROM may WHERE Loai = ?";
+	db.executeParamsQuery(query, value, function(err,data){
+		callback(err,data);
+	});
+}
+
+
 exports.create = function (value ,callback) {
 	var query = "INSERT INTO may SET ?";
 	db.executeParamsQuery(query, value, function (err, data){

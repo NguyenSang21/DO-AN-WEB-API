@@ -51,6 +51,19 @@ passport.use(strategy);
     // tìm kiếm 1 sản phẩm
 
     router.get('/products/:productId', product.findOneProduct);
+    
+    //tìm kiếm hãng sản xuất
+    router.get('/hsx', product.findProductHSX);
+
+    //tìm kiếm 1 hãng sản xuất theo tên
+    router.get('/products/hsx/:nameHSX', product.findOneProductHSX);
+
+    //tìm kiếm 1 mức giá từ giá bắt đầu -> giá kết thúc
+    router.get('/products/gia/:giabd/:giakt', product.findOneProductGia);
+
+    //tìm kiếm sản phẩm theo id loại
+    router.get('/products/type/:typeId', product.findOneProductType);
+
 
 
 /////////////////////////////////////////Loại máy/////////////////////////
