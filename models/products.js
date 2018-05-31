@@ -75,3 +75,10 @@ exports.findPageProduct = function(value,callback){
 		callback(err,data);
 	});
 }
+
+exports.findNumberPageProduct = function(callback){
+	var query = "SELECT CEILING(COUNT(*)/8) as kq FROM may";
+	db.executeQuery(query, function(err,data){
+		callback(err,data);
+	});
+}

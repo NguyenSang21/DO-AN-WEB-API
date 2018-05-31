@@ -135,3 +135,14 @@ exports.findPageProduct = function (req, res) {
         res.send(data);
     });
 };
+
+exports.findNumberPageProduct = function (req, res) {
+    // Delete a note with the specified noteId in the request
+    productModel.findNumberPageProduct(function (err, data) {
+        if (err) {
+            res.status(400).send(err);
+            return;
+        }
+        res.send(data);
+    });
+};

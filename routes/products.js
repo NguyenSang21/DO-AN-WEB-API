@@ -65,7 +65,8 @@ passport.use(strategy);
     router.get('/products/type/:typeId', product.findOneProductType);
     // phân trang
     router.get('/products/page/:pageId', product.findPageProduct);
-
+    // Số lượng trang
+    router.get('/products/numberPage/', product.findNumberPageProduct);
 /////////////////////////////////////////Loại máy/////////////////////////
     // Create a new Note
     router.post('/type', passport.authenticate('jwt', { session: false }), type.create);
