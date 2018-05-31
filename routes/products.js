@@ -64,7 +64,7 @@ passport.use(strategy);
     //tìm kiếm sản phẩm theo id loại
     router.get('/products/type/:typeId', product.findOneProductType);
     // phân trang
-    router.get('/products/:pageId', product.findPageProduct);
+    router.get('/products/page/:pageId', product.findPageProduct);
 
 /////////////////////////////////////////Loại máy/////////////////////////
     // Create a new Note
