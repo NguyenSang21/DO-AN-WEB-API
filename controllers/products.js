@@ -123,3 +123,15 @@ exports.delete = function (req, res) {
         res.send(data);
     });
 };
+
+exports.findPageProduct = function (req, res) {
+    // Delete a note with the specified noteId in the request
+    var id = req.params.pageId;
+    productModel.findPageProduct(id, function (err, data) {
+        if (err) {
+            res.status(400).send(err);
+            return;
+        }
+        res.send(data);
+    });
+};

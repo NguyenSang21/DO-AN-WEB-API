@@ -57,10 +57,21 @@ exports.update = function (value, callback) {
 	});
 }
 
-exports.delete=function(value,callback){
+exports.delete = function(value,callback){
 	var query = "delete from may where idM = ?";
 	console.log(value);
 	db.executeParamsQuery(query,value,function(err,data){
+		callback(err,data);
+	});
+}
+
+exports.findPageProduct = function(value,callback){
+	var idPage = Number(value);
+	var offset = idPage === 1 ? 0 : idPage * 8;
+	var limit = offset + 8;
+	var query = "select * from may limit ?, ?";
+	console.log(value);
+	db.executeParamsQuery(query, [offset, limit],function(err,data){
 		callback(err,data);
 	});
 }
