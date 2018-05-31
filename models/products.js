@@ -68,7 +68,7 @@ exports.delete = function(value,callback){
 exports.findPageProduct = function(value,callback){
 	var idPage = Number(value);
 	var offset = idPage === 1 ? 0 : idPage * 8;
-	var limit = offset + 8;
+	var limit = 8;
 	var query = "select * from may limit ?, ?";
 	console.log(value);
 	db.executeParamsQuery(query, [offset, limit],function(err,data){
