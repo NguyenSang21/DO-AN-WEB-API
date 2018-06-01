@@ -21,14 +21,14 @@ exports.findProductHSX = function(callback){
 }
 
 exports.findOneProductHSX = function(name, callback){
-	var query = "SELECT *, FLOOR(COUNT(*)/8) as kq FROM may WHERE NSX = ?";
+	var query = "SELECT FLOOR(COUNT(*)/8) as kq FROM may WHERE NSX = ?";
 	db.executeParamsQuery(query, name, function(err,data){
 		callback(err,data);
 	});
 }
 
 exports.findOneProductGia = function(giabd, giakt, callback){
-	var query = "SELECT *, FLOOR(COUNT(*)/8) as kq FROM may WHERE Gia >= ? AND Gia <= ?";
+	var query = "SELECT FLOOR(COUNT(*)/8) as kq FROM may WHERE Gia >= ? AND Gia <= ?";
 	db.executeParamsQuery(query, [giabd, giakt], function(err,data){
 		callback(err,data);
 	});
@@ -36,7 +36,7 @@ exports.findOneProductGia = function(giabd, giakt, callback){
 
 exports.findOneProductType = function(value, callback){
 	console.log(value);
-	var query = "SELECT *, FLOOR(COUNT(*)/8) as kq FROM may WHERE Loai = ?";
+	var query = "SELECT FLOOR(COUNT(*)/8) as kq FROM may WHERE Loai = ?";
 	db.executeParamsQuery(query, value, function(err,data){
 		callback(err,data);
 	});
