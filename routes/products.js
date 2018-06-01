@@ -63,6 +63,17 @@ passport.use(strategy);
 
     //tìm kiếm sản phẩm theo id loại
     router.get('/products/type/:typeId', product.findOneProductType);
+
+    //phân trang tìm kiếm 1 hãng sản xuất theo tên
+    router.get('/products/hsx/:nameHSX/:pageId', product.findPageProductHSX);
+
+    //phân trang tìm kiếm 1 mức giá từ giá bắt đầu -> giá kết thúc
+    router.get('/products/gia/:giabd/:giakt/:pageId', product.findPageProductGia);
+
+    //phân trang tìm kiếm sản phẩm theo id loại
+    router.get('/products/type/:typeId/:pageId', product.findPageProductType);
+
+
     // phân trang
     router.get('/products/page/:pageId', product.findPageProduct);
     // Số lượng trang

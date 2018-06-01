@@ -67,12 +67,41 @@ exports.findOneProductHSX = function (req, res) {
     );
 };
 
+exports.findPageProductHSX = function (req, res) {
+    // Delete a note with the specified noteId in the request
+    var name = req.params.nameHSX;
+    var id = req.params.pageId;
+    productModel.findPageProductHSX(name, id, function (err, data) {
+        if (err) {
+            res.status(400).send(err);
+            return;
+        }
+        res.send(data);
+    });
+};
+
 exports.findOneProductGia = function (req, res) {
     // Retrieve and return all notes from the database.
     console.log(req.params);
     var giabd = req.params.giabd;
     var giakt = req.params.giakt;
     productModel.findOneProductGia(giabd, giakt, function (err, data) {
+        if (err) {
+            res.status(400).send(err);
+            return;
+        }
+        res.send(data);
+    }
+    );
+};
+
+exports.findPageProductGia = function (req, res) {
+    // Retrieve and return all notes from the database.
+    console.log(req.params);
+    var id = req.params.pageId;
+    var giabd = req.params.giabd;
+    var giakt = req.params.giakt;
+    productModel.findPageProductGia(giabd, giakt, id, function (err, data) {
         if (err) {
             res.status(400).send(err);
             return;
@@ -95,6 +124,19 @@ exports.findOneProductType = function (req, res) {
     );
 };
 
+exports.findPageProductType = function (req, res) {
+    // Retrieve and return all notes from the database.
+    var id = req.params.typeId;
+    var idPage = req.params.pageId;
+    productModel.findPageProductType(id, idPage, function (err, data) {
+        if (err) {
+            res.status(400).send(err);
+            return;
+        }
+        res.send(data);
+    }
+    );
+};
 
 exports.update = function (req, res) {
     // Update a note identified by the noteId in the request

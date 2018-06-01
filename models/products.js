@@ -21,14 +21,14 @@ exports.findProductHSX = function(callback){
 }
 
 exports.findOneProductHSX = function(name, callback){
-	var query = "SELECT * FROM may WHERE NSX = ?";
+	var query = "SELECT *, FLOOR(COUNT(*)/8) as kq FROM may WHERE NSX = ?";
 	db.executeParamsQuery(query, name, function(err,data){
 		callback(err,data);
 	});
 }
 
 exports.findOneProductGia = function(giabd, giakt, callback){
-	var query = "SELECT * FROM may WHERE Gia >= ? AND Gia <= ?";
+	var query = "SELECT *, FLOOR(COUNT(*)/8) as kq FROM may WHERE Gia >= ? AND Gia <= ?";
 	db.executeParamsQuery(query, [giabd, giakt], function(err,data){
 		callback(err,data);
 	});
@@ -36,8 +36,37 @@ exports.findOneProductGia = function(giabd, giakt, callback){
 
 exports.findOneProductType = function(value, callback){
 	console.log(value);
-	var query = "SELECT * FROM may WHERE Loai = ?";
+	var query = "SELECT *, FLOOR(COUNT(*)/8) as kq FROM may WHERE Loai = ?";
 	db.executeParamsQuery(query, value, function(err,data){
+		callback(err,data);
+	});
+}
+
+exports.findPageProductHSX = function(name, idPage, callback){
+	var offset = idPage === 1 ? 0 : idPage * 8;
+	var limit = 8;
+	var query = "select * from may WHERE NSX = ? limit ?, ?";
+
+	db.executeParamsQuery(query, [name, offset, limit], function(err,data){
+		callback(err,data);
+	});
+}
+
+exports.findPageProductGia = function(giabd, giakt, idPage, callback){
+	var offset = idPage === 1 ? 0 : idPage * 8;
+	var limit = 8;
+	var query = "select * from may WHERE Gia >= ? AND Gia <= ? limit ?, ?";
+	db.executeParamsQuery(query, [giabd, giakt, offset, limit], function(err,data){
+		callback(err,data);
+	});
+}
+
+exports.findPageProductType = function(value, idPage, callback){
+	var offset = idPage === 1 ? 0 : idPage * 8;
+	var limit = 8;
+	var query = "select * from may WHERE Loai = ? limit ?, ?";
+	console.log(value);
+	db.executeParamsQuery(query, [value, offset, limit], function(err,data){
 		callback(err,data);
 	});
 }
@@ -77,7 +106,7 @@ exports.findPageProduct = function(value,callback){
 }
 
 exports.findNumberPageProduct = function(callback){
-	var query = "SELECT CEILING(COUNT(*)/8) as kq FROM may";
+	var query = "SELECT FLOOR(COUNT(*)/8) as kq FROM may";
 	db.executeQuery(query, function(err,data){
 		callback(err,data);
 	});
