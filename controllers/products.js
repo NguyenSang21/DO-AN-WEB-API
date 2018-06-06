@@ -41,6 +41,20 @@ exports.findOneProduct = function (req, res) {
     );
 };
 
+exports.findOneKeyProduct = function (req, res) {
+    // Retrieve and return all notes from the database.
+    var id = req.params.productKey;
+    console.log(id);
+    productModel.findOneKeyProduct(id, function (err, data) {
+        if (err) {
+            res.status(400).send(err);
+            return;
+        }
+        res.send(data);
+    }
+    );
+};
+
 exports.findProductHSX = function (req, res) {
     // Retrieve and return all notes from the database.
     productModel.findProductHSX(function (err, data) {

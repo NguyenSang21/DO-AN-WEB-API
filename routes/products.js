@@ -51,7 +51,10 @@ passport.use(strategy);
     // tìm kiếm 1 sản phẩm
 
     router.get('/products/:productId', product.findOneProduct);
-    
+
+    // TÌM 1 SẢN PHẨM THEO KEY
+    router.get('/productsKey/:productKey', product.findOneKeyProduct);
+
     //tìm kiếm hãng sản xuất
     router.get('/hsx', product.findProductHSX);
 

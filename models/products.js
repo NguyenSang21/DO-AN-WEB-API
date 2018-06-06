@@ -13,6 +13,14 @@ exports.findOneProduct = function(value, callback){
 	});
 }
 
+exports.findOneKeyProduct = function(value, callback){
+	console.log(value);
+	var query = "select * from may where `Key` = ?";
+	db.executeParamsQuery(query, value, function(err,data){
+		callback(err,data);
+	});
+}
+
 exports.findProductHSX = function(callback){
 	var query = "SELECT NSX FROM may GROUP BY(NSX)";
 	db.executeQuery(query, function(err,data){
