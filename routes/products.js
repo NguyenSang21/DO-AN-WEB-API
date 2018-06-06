@@ -113,7 +113,7 @@ passport.use(strategy);
     router.get('/user/:userId', user.findOneUserId);
     // tìm kiếm 1 người dùng có username
 
-    router.get('/user/:username', user.findOneUsername);
+    router.get('/user/username/:username', user.findOneUsername);
 
 
 ////////////////////////////////////////////////////////////////////////////////
