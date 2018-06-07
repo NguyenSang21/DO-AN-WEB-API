@@ -3,7 +3,7 @@ var router = express.Router();
 var product = require('../controllers/products.js');
 var type = require('../controllers/type.js');
 var user = require('../controllers/user.js');
-
+var order = require('../controllers/order.js');
 var jwt = require('jsonwebtoken');
 var passport = require("passport");
 var passportJWT = require("passport-jwt");
@@ -119,6 +119,10 @@ passport.use(strategy);
     router.get('/user/username/:username', user.findOneUsername);
 
 
-////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////HOÁ ĐƠN SẢN PHẨM/////////////////////////////////
+
+    // lấy đơn đặt hàng của 1 người
+    router.get('/order/:userId', order.findAll);
+
 ////////////////////////////////////////////////////////////////////////////////
 module.exports = router;
