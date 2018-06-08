@@ -12,8 +12,8 @@ exports.create = function (value ,callback) {
 }
 
 exports.update = function (value, callback) {
-	var query = "update ngdung Set Username=?, Pass=?, hoTen=?, ngSinh=?, gTinh=?, SDT=?, email=?, Loai=? Where idNGDUNG = ? ";
-	db.executeParamsQuery(query, [value.Username, value.Pass, value.hoTen,value.ngSinh, value.gTinh, value.SDT,value.email, value.Loai, value.idNGDUNG], function(err, data){
+	var query = "update ngdung Set Username=?, Pass=?, hoTen=?, ngSinh=?, gTinh=?, SDT=?, email=?, Loai=?, diaChiGiaoHang=? Where idNGDUNG = ? ";
+	db.executeParamsQuery(query, [value.Username, value.Pass, value.hoTen,value.ngSinh, value.gTinh, value.SDT,value.email, value.Loai, value.diaChiGiaoHang, value.idNGDUNG], function(err, data){
 		callback(err, data);
 	});
 }
