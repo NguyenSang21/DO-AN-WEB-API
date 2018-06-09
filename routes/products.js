@@ -124,9 +124,23 @@ passport.use(strategy);
 
     // lấy đơn đặt hàng của 1 người
     router.get('/order/:userId', order.findAll);
+
+    // Create a new Note
+    router.post('/order', order.create);
+
+    // Update a Note with noteId
+    router.put('/order', passport.authenticate('jwt', { session: false }), order.update);
+
     
 ////////////////////////////// LẤY HOÁ ĐƠN CHI TIẾT CỦA 1 NGƯỜI /////////////////////////
     router.get('/detailorder/:orderId', detailOrder.findAll );
+
+    // Create a new Note
+    router.post('/detailorder', detailOrder.create);
+
+    // Update a Note with noteId
+    router.put('/detailorder', passport.authenticate('jwt', { session: false }), detailOrder.update);
+
 
 ////////////////////////////////////////////////////////////////////////////////
 module.exports = router;

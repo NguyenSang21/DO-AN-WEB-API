@@ -14,11 +14,23 @@ exports.findAll = function (req, res) {
     );
 };
 
+exports.create = function (req, res) {
+    // Create and Save a new Note
+    var value = req.body;
+
+    orderModel.create(value, function (err, data) {
+        if (err) {
+            res.status(400).send(err);
+            return;
+        }
+        res.send(data);
+    });
+};
 
 exports.update = function (req, res) {
     // Update a note identified by the noteId in the request
     var value = req.body;
-    console.log(value);
+    
     orderModel.update(value, function(err, data){
             if(err) {
                 res.status(400).send(err);

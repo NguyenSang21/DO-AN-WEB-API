@@ -8,3 +8,17 @@ exports.findAll=function(value, callback){
     });
     
 }
+
+exports.create = function (value ,callback) {
+	var query = "CALL insertHoaDon(?, ?, ?, ?, ?)";
+	db.executeParamsQuery(query, [value.idNGDUNG, value.tongTien, value.NgayMua, value.tinhTrang, value.diaChi], function (err, data){
+        callback(err, data);
+    });
+}
+
+exports.update = function (value, callback) {
+	var query = "update hoadon Set tinhTrang=? Where idHD = ? ";
+	db.executeParamsQuery(query, [value.tinhTrang, value.idHD], function(err, data){
+		callback(err, data);
+	});
+}
