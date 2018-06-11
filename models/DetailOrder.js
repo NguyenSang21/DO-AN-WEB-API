@@ -10,8 +10,14 @@ exports.findAll=function(value, callback){
 }
 
 exports.create = function (value ,callback) {
-	var query = "INSERT INTO chitiethd SET ?";
-	db.executeParamsQuery(query, value, function (err, data){
+	let values = [];
+	for(let i=0; i<value.length; i++)
+	{
+		values.push([value[i].idCTHD, value[i].idHD, value[i].idM, value[i].SoLuong, value[i].DonGia, value[i].TongTien1SP, value[i].TrangThai]);
+	}
+	console.log(values);
+	var query = "INSERT INTO chitiethd values ?";
+	db.executeParamsQuery(query, [values], function (err, data){
         callback(err, data);
     });
 }
