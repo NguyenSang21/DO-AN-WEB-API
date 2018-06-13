@@ -13,7 +13,7 @@ exports.create = function (value ,callback) {
 	let values = [];
 	for(let i=0; i<value.length; i++)
 	{
-		values.push([value[i].idCTHD, value[i].idHD, value[i].idM, value[i].SoLuong, value[i].DonGia, value[i].TongTien1SP, value[i].TrangThai]);
+		values.push([value[i].idCTHD, value[i].idHD, value[i].idM, value[i].tenSanPham, value[i].SoLuong, value[i].DonGia, value[i].TongTien1SP, value[i].TrangThai]);
 	}
 	console.log(values);
 	var query = "INSERT INTO chitiethd values ?";

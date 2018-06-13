@@ -10,8 +10,8 @@ exports.findAll=function(value, callback){
 }
 
 exports.create = function (value ,callback) {
-	var query = "CALL insertHoaDon(?, ?, ?, ?, ?)";
-	db.executeParamsQuery(query, [value.idNGDUNG, value.tongTien, value.NgayMua, value.tinhTrang, value.diaChi], function (err, data){
+	var query = "CALL insertHoaDon(?, ?, ?, ?, ?, ?)";
+	db.executeParamsQuery(query, [value.idNGDUNG, value.tongTien, value.NgayMua, value.tinhTrang, value.diaChi, value.soSanPham], function (err, data){
         callback(err, data);
     });
 }
