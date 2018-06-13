@@ -52,7 +52,7 @@ exports.findOneProductType = function(value, callback){
 }
 
 exports.findPageProductHSX = function(name, idPage, callback){
-	var offset = idPage === 1 ? 0 : idPage * 9;
+	var offset = idPage == 1 ? 0 : idPage * 9;
 	var limit = 9;
 	var query = "select * from may WHERE NSX = ? limit ?, ?";
 
@@ -62,7 +62,7 @@ exports.findPageProductHSX = function(name, idPage, callback){
 }
 
 exports.findPageProductGia = function(giabd, giakt, idPage, callback){
-	var offset = idPage === 1 ? 0 : idPage * 9;
+	var offset = idPage == 1 ? 0 : idPage * 9;
 	var limit = 9;
 	var query = "select * from may WHERE Gia >= ? AND Gia <= ? limit ?, ?";
 	db.executeParamsQuery(query, [giabd, giakt, offset, limit], function(err,data){
@@ -71,7 +71,7 @@ exports.findPageProductGia = function(giabd, giakt, idPage, callback){
 }
 
 exports.findPageProductType = function(value, idPage, callback){
-	var offset = idPage === 1 ? 0 : idPage * 9;
+	var offset = idPage == 1 ? 0 : idPage * 9;
 	var limit = 9;
 	var query = "select * from may WHERE Loai = ? limit ?, ?";
 	console.log(value);
@@ -105,7 +105,7 @@ exports.delete = function(value,callback){
 
 exports.findPageProduct = function(value,callback){
 	var idPage = Number(value);
-	var offset = idPage === 1 ? 0 : idPage * 9;
+	var offset = idPage == 1 ? 0 : idPage * 9;
 	var limit = 9;
 	var query = "select * from may limit ?, ?";
 	console.log(value);
