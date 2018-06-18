@@ -13,9 +13,25 @@ exports.findOneProduct = function(value, callback){
 	});
 }
 
+exports.findProduct = function(value, callback){
+	console.log(value);
+	var query = "select * from may where tenMay LIKE '%"+value+"%'";
+	db.executeQuery(query, function(err,data){
+		callback(err,data);
+	});
+}
+
 exports.findOneKeyProduct = function(value, callback){
 	console.log(value);
 	var query = "select * from may where `Key` = ?";
+	db.executeParamsQuery(query, value, function(err,data){
+		callback(err,data);
+	});
+}
+
+exports.findProductRelated = function(value, callback){
+	console.log(value);
+	var query = "select * from may where Loai = ?";
 	db.executeParamsQuery(query, value, function(err,data){
 		callback(err,data);
 	});

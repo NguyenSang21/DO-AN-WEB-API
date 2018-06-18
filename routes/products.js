@@ -53,8 +53,15 @@ passport.use(strategy);
 
     router.get('/products/:productId', product.findOneProduct);
 
+     // tìm kiếm 1 sản phẩm theo tên
+
+     router.get('/productsSearch/:productName', product.findProduct);
+
     // TÌM 1 SẢN PHẨM THEO KEY
     router.get('/productsKey/:productKey', product.findOneKeyProduct);
+
+    // TÌM 1 SẢN PHẨM liên quan THEO type
+    router.get('/productsType/:productType', product.findProductRelated);
 
     //tìm kiếm hãng sản xuất
     router.get('/hsx', product.findProductHSX);

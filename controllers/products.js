@@ -55,6 +55,34 @@ exports.findOneKeyProduct = function (req, res) {
     );
 };
 
+exports.findProduct = function (req, res) {
+    // Retrieve and return all notes from the database.
+    var id = req.params.productName;
+    console.log(id);
+    productModel.findProduct(id, function (err, data) {
+        if (err) {
+            res.status(400).send(err);
+            return;
+        }
+        res.send(data);
+    }
+    );
+};
+
+exports.findProductRelated = function (req, res) {
+    // Retrieve and return all notes from the database.
+    var id = req.params.productType;
+    console.log(id);
+    productModel.findProductRelated(id, function (err, data) {
+        if (err) {
+            res.status(400).send(err);
+            return;
+        }
+        res.send(data);
+    }
+    );
+};
+
 exports.findProductHSX = function (req, res) {
     // Retrieve and return all notes from the database.
     productModel.findProductHSX(function (err, data) {
