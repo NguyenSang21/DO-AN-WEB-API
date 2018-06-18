@@ -13,9 +13,9 @@ exports.findOneProduct = function(value, callback){
 	});
 }
 
-exports.findProduct = function(value, callback){
+exports.SearchProduct = function(value, callback){
 	console.log(value);
-	var query = "select * from may where tenMay LIKE '%"+value+"%'";
+	var query = "select CEIL(COUNT(*)/9) as kq from may where tenMay LIKE '%"+value+"%'";
 	db.executeQuery(query, function(err,data){
 		callback(err,data);
 	});
@@ -73,6 +73,16 @@ exports.findPageProductHSX = function(name, idPage, callback){
 	var query = "select * from may WHERE NSX = ? limit ?, ?";
 
 	db.executeParamsQuery(query, [name, offset, limit], function(err,data){
+		callback(err,data);
+	});
+}
+
+exports.PageSearchProduct = function(name, idPage, callback){
+	var offset = idPage == 1 ? 0 : idPage * 9;
+	var limit = 9;
+	var query = "select * from may WHERE tenMay LIKE '%"+name+"%' limit ?, ?";
+
+	db.executeParamsQuery(query, [offset, limit], function(err,data){
 		callback(err,data);
 	});
 }

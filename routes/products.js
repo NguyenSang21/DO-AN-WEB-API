@@ -53,10 +53,6 @@ passport.use(strategy);
 
     router.get('/products/:productId', product.findOneProduct);
 
-     // tìm kiếm 1 sản phẩm theo tên
-
-     router.get('/productsSearch/:productName', product.findProduct);
-
     // TÌM 1 SẢN PHẨM THEO KEY
     router.get('/productsKey/:productKey', product.findOneKeyProduct);
 
@@ -74,6 +70,13 @@ passport.use(strategy);
 
     //tìm kiếm sản phẩm theo id loại
     router.get('/products/type/:typeId', product.findOneProductType);
+
+    // tìm kiếm 1 sản phẩm theo tên
+
+    router.get('/productsSearch/:productName', product.SearchProduct);
+
+    //phân trang tìm kiếm 1 theo tên
+    router.get('/productsSearch/:productName/:pageId', product.PageSearchProduct);
 
     //phân trang tìm kiếm 1 hãng sản xuất theo tên
     router.get('/products/hsx/:nameHSX/:pageId', product.findPageProductHSX);
