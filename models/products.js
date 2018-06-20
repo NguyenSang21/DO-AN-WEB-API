@@ -155,3 +155,11 @@ exports.findTopProduct = function(value,callback){
 		callback(err,data);
 	});
 }
+exports.updateViews = function(value,callback){
+
+	var query = "update may Set slXem= (slxem + 1) Where idM = ?"; 
+	console.log(query);
+	db.executeParamsQuery(query, value ,function(err,data){
+		callback(err,data);
+	});
+}

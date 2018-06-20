@@ -248,9 +248,22 @@ exports.findNumberPageProduct = function (req, res) {
 
 
 exports.findTopProduct = function (req, res) {
-    // Delete a note with the specified noteId in the request
     var id = req.params.idProduct;
     productModel.findTopProduct(id, function (err, data) {
+        if (err) {
+            res.status(400).send(err);
+            return;
+        }
+        res.send(data);
+    });
+};
+
+
+// update views
+exports.updateViews = function (req, res) {
+    
+    var id = req.params.idProduct;
+    productModel.updateViews(id, function (err, data) {
         if (err) {
             res.status(400).send(err);
             return;
