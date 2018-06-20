@@ -146,3 +146,12 @@ exports.findNumberPageProduct = function(callback){
 		callback(err,data);
 	});
 }
+
+exports.findTopProduct = function(value,callback){
+
+	var query = "Call getProducts('" + value + "')";
+	console.log(query);
+	db.executeQuery(query,function(err,data){
+		callback(err,data);
+	});
+}

@@ -87,6 +87,8 @@ passport.use(strategy);
     //phân trang tìm kiếm sản phẩm theo id loại
     router.get('/products/type/:typeId/:pageId', product.findPageProductType);
 
+    // LẤY những sản phẩm bán chạy nhất
+    router.get('/topProduct/:idProduct', product.findTopProduct);
 
     // phân trang
     router.get('/products/page/:pageId', product.findPageProduct);
@@ -154,6 +156,7 @@ passport.use(strategy);
     // Update a Note with noteId
     router.put('/detailorder', passport.authenticate('jwt', { session: false }), detailOrder.update);
 
+    
 
 ////////////////////////////////////////////////////////////////////////////////
 module.exports = router;

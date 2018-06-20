@@ -245,3 +245,16 @@ exports.findNumberPageProduct = function (req, res) {
         res.send(data);
     });
 };
+
+
+exports.findTopProduct = function (req, res) {
+    // Delete a note with the specified noteId in the request
+    var id = req.params.idProduct;
+    productModel.findTopProduct(id, function (err, data) {
+        if (err) {
+            res.status(400).send(err);
+            return;
+        }
+        res.send(data);
+    });
+};
