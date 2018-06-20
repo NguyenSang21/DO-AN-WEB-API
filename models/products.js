@@ -156,10 +156,10 @@ exports.findTopProduct = function(value,callback){
 	});
 }
 exports.updateViews = function(value,callback){
-
+	var id = Number(value);
 	var query = "update may Set slXem= (slxem + 1) Where idM = ?"; 
 	console.log(query);
-	db.executeParamsQuery(query, value ,function(err,data){
+	db.executeParamsQuery(query, id ,function(err,data){
 		callback(err,data);
 	});
 }
