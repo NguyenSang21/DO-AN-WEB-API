@@ -149,9 +149,9 @@ exports.findNumberPageProduct = function(callback){
 
 exports.findTopProduct = function(value,callback){
 
-	var query = "Call getProducts('" + value + "')";
+	var query = "select slMatDinh-slHienTai as kq,idM,tenMay,NSX,ManHinh,HDH,CPU,RAM,CAMERA,PIN,Gia,ghiChu,ngSX,linkAnh,`Key` from may where NSX = ? ORDER BY kq DESC limit 0,4";
 	console.log(query);
-	db.executeQuery(query,function(err,data){
+	db.executeParamsQuery(query, value ,function(err,data){
 		callback(err,data);
 	});
 }
