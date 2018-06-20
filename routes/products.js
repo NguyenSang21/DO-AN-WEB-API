@@ -91,7 +91,7 @@ passport.use(strategy);
     router.get('/topProduct/:idProduct', product.findTopProduct);
 
      // update lượt view cho sản phẩm
-     router.post('/view/:idProduct', product.updateViews);
+    router.get('/view/:idProduct', product.updateViews);
 
     // phân trang
     router.get('/products/page/:pageId', product.findPageProduct);
