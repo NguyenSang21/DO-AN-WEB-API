@@ -14,6 +14,17 @@ exports.findAll = function (req, res) {
     );
 };
 
+exports.findAllOrder = function (req, res) {
+    orderModel.findAllOrder(function (err, data) {
+        if (err) {
+            res.status(400).send(err);
+            return;
+        }
+        res.send(data);
+    }
+    );
+};
+
 exports.create = function (req, res) {
     // Create and Save a new Note
     var value = req.body;

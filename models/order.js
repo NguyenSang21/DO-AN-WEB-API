@@ -9,6 +9,15 @@ exports.findAll=function(value, callback){
     
 }
 
+exports.findAllOrder = function(callback){
+
+	db.executeQuery("select * from hoadon",function(err,data){
+		callback(err,data);
+    });
+    
+}
+
+
 exports.create = function (value ,callback) {
 	var query = "CALL insertHoaDon(?, ?, ?, ?, ?, ?)";
 	db.executeParamsQuery(query, [value.idNGDUNG, value.tongTien, value.NgayMua, value.tinhTrang, value.diaChi, value.soSanPham], function (err, data){

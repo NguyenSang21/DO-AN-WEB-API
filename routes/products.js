@@ -141,9 +141,10 @@ passport.use(strategy);
     router.get('/order/:userId', order.findAll);
 
     // lấy đơn đặt hàng của 1 người
-    router.get('/order/:userId', order.findAll);
+    router.get('/order', order.findAllOrder);
     
     // Create a new Note
+
     router.post('/order', order.create);
 
     // Update a Note with noteId
