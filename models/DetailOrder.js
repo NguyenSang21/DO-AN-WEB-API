@@ -28,6 +28,7 @@ exports.create = function (value ,callback) {
 
 exports.update = function (value, callback) {
 	var query = "update chitiethd Set TrangThai=? Where idCTHD = ? ";
+	console.log(value.TrangThai);
 	db.executeParamsQuery(query, [value.TrangThai, Number(value.idCTHD)], function(err, data){
 		callback(err, data);
 	});
